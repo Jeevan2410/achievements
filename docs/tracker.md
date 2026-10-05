@@ -13,6 +13,13 @@ Caveat: unauthenticated (public-only) search reports 20; authenticated search re
 
 Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 (all my own repos).
 
+### External contributions
+| PR | Issue | Status |
+|---|---|---|
+| libredb/libredb-studio#1521 | #1458 MongoDB server-selection timeout | open, awaiting review/CI (opened 2026-10-05) |
+
+Flagship (Jeevan2410/achievement-tracker): PRs #4, #5, #6, #8, #10, #12 merged; v0.1.0 released.
+
 ## Pair Extraordinaire
 | Item | Value |
 |---|---|
