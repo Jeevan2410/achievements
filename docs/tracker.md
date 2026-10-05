@@ -31,6 +31,10 @@ Flagship (Jeevan2410/achievement-tracker): PRs #4, #5, #6, #8, #10, #12 merged; 
 | Partner | none (parked) |
 
 ## Galaxy Brain
+| Answer | Status |
+|---|---|
+| [lingui#2573](https://github.com/lingui/js-lingui/discussions/2573#discussioncomment-18756467) plain-Node Lingui with macros (tested demo) | posted 2026-10-05, awaiting asker |
+
 | Item | Value |
 |---|---|
 | Accepted answers | 0 |
