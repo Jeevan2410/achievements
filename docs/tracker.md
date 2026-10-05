@@ -1,15 +1,16 @@
 # Tracker
 
-Last updated: 2026-10-05 (baseline; counts are estimates from `gh api search/issues`)
+Last updated: 2026-10-05 (counts from `achievement-tracker` and `gh api search/issues`)
 
 ## Pull Shark
 | Item | Value |
 |---|---|
-| Merged PRs (estimate) | 45 |
+| Merged PRs, authenticated (incl. private repos) | 53 |
+| Merged PRs, public only | 26 |
 | Next tier | 128 |
-| Remaining | 128 - 45 = **83** |
+| Remaining | 128 - 53 = **75** (or 102 if only public PRs count) |
 
-Caveat: unauthenticated (public-only) search reports 20; authenticated search reports 45 (includes private repos such as neelequip). Which one the badge counts is unconfirmed, so the true remaining is 83 to 108. Check the profile badge.
+Caveat: which count the badge uses is unconfirmed. Check the profile badge.
 
 Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 (all my own repos).
 
