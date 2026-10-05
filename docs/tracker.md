@@ -5,10 +5,10 @@ Last updated: 2026-10-05 (counts from `achievement-tracker` and `gh api search/i
 ## Pull Shark
 | Item | Value |
 |---|---|
-| Merged PRs, authenticated (incl. private repos) | 53 |
+| Merged PRs, authenticated (incl. private repos) | 55 |
 | Merged PRs, public only | 26 |
 | Next tier | 128 |
-| Remaining | 128 - 53 = **75** (or 102 if only public PRs count) |
+| Remaining | 128 - 55 = **73** (or ~100 if only public PRs count) |
 
 Caveat: which count the badge uses is unconfirmed. Check the profile badge.
 
