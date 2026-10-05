@@ -16,7 +16,10 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 ### External contributions
 | PR | Issue | Status |
 |---|---|---|
-| libredb/libredb-studio#1521 | #1458 MongoDB server-selection timeout | open, awaiting review/CI (opened 2026-10-05) |
+| libredb/libredb-studio#1521 | #1458 MongoDB server-selection timeout | closed as duplicate at maintainer's request (another contributor's PR was already up) |
+| libredb/libredb-studio#1522 | #1408 MongoDB validate/compact skip views | open, awaiting review/CI (opened 2026-10-05) |
+
+Lesson: search all-state PRs for the issue number before claiming.
 
 Flagship (Jeevan2410/achievement-tracker): PRs #4, #5, #6, #8, #10, #12 merged; v0.1.0 released.
 
