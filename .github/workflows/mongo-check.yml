@@ -1,0 +1,26 @@
+name: mongo-check
+on:
+  push:
+    branches: [mongo-check]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mongo: ["7.0", "8.0", "8.2"]
+    services:
+      mongo:
+        image: mongo:${{ matrix.mongo }}
+        ports: ["27017:27017"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save mongodb@7
+      - run: node scripts/mongo-check.mjs
+        env:
+          MONGO_URL: mongodb://localhost:27017
