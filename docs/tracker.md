@@ -1,6 +1,6 @@
 # Tracker
 
-Last updated: 2026-10-05 (counts from `achievement-tracker` and `gh api search/issues`)
+Last updated: 2026-10-06 (counts from `achievement-tracker` and `gh api search/issues`)
 
 ## Pull Shark
 | Item | Value |
@@ -18,8 +18,8 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 | PR | Issue | Status |
 |---|---|---|
 | libredb/libredb-studio#1521 | #1458 MongoDB server-selection timeout | closed as duplicate at maintainer's request (another contributor's PR was already up) |
-| libredb/libredb-studio#1522 | #1408 MongoDB validate/compact skip views | open, assigned, awaiting review (opened 2026-10-05) |
-| lingui/js-lingui#2703 | #2702 vite-plugin query-string id breaks native transform | open, CI green, awaiting review (a later duplicate #2704 exists) |
+| libredb/libredb-studio#1522 | #1408 MongoDB validate/compact skip views | **MERGED 2026-10-06**, approved by maintainer cevheri |
+| lingui/js-lingui#2703 | #2702 vite-plugin query-string id breaks native transform | maintainer: "fix is right"; asked for a runVite fixture test, done 2026-10-06, awaiting re-review |
 | (proposal) | lingui #1704 compileNamespace vs "type": "module" | asked maintainers which fix they want, 2026-10-05; no code until they answer |
 
 Lesson: search all-state PRs for the issue number before claiming.
