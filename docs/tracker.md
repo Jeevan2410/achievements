@@ -19,11 +19,11 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 |---|---|---|
 | libredb/libredb-studio#1521 | #1458 MongoDB server-selection timeout | closed as duplicate at maintainer's request (another contributor's PR was already up) |
 | libredb/libredb-studio#1522 | #1408 MongoDB validate/compact skip views | **MERGED 2026-10-06**, approved by maintainer cevheri |
-| lingui/js-lingui#2703 | #2702 vite-plugin query-string id breaks native transform | fixture test done; two comment nits removed 2026-10-06; awaiting approval |
-| libredb/libredb-studio#1554 | #1456 MongoDB nullable inference + profiler nulls | open 2026-10-06, verified on real MongoDB 7.0/8.0/8.2 |
+| lingui/js-lingui#2703 | #2702 vite-plugin query-string id breaks native transform | **MERGED 2026-10-06**, approved by andrii-bodnar |
+| libredb/libredb-studio#1554 | #1456 MongoDB nullable inference + profiler nulls | changes requested (drop `_id` exception), done 2026-10-06 |
 | reticlehq/reticle#1402 | #1360 absent check on a hidden element names state: hidden | open; bot review addressed; audit CI failure is repo-wide |
 | libredb/libredb-studio#1556 | #1444 label Percona Server from @@version_comment | open 2026-10-06 |
-| corsairdev/corsair#1847 | #1838 Spotify search missing type | maintainer said go ahead; open, all CI green |
+| corsairdev/corsair#1847 | #1838 Spotify search missing type | CI green; typing nit fixed; asked maintainer whether R4 demo video is needed |
 | (proposal) | lingui #1704 compileNamespace vs "type": "module" | asked maintainers which fix they want, 2026-10-05; no code until they answer |
 
 Lesson: search all-state PRs for the issue number before claiming.
