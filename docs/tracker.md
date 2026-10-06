@@ -25,6 +25,7 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 | libredb/libredb-studio#1556 | #1444 label Percona Server from @@version_comment | **MERGED 2026-10-06** |
 | corsairdev/corsair#1847 | #1838 Spotify search missing type | CI green; typing nit fixed; asked maintainer whether R4 demo video is needed |
 | libredb/libredb-studio#1561 | #1414 editor: selected statement keeps trailing ; on Elasticsearch | open 2026-10-06 |
+| libredb/libredb-studio#1562 | #1450 LibreDB :memory: and missing-directory messages | open 2026-10-06 |
 | (proposal) | lingui #1704 compileNamespace vs "type": "module" | asked maintainers which fix they want, 2026-10-05; no code until they answer |
 
 Lesson: search all-state PRs for the issue number before claiming.
