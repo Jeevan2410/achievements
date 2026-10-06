@@ -5,12 +5,12 @@ on:
 permissions:
   contents: read
 jobs:
-  postgis-move:
+  role-lifecycle:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        image: ["postgis/postgis:15-3.3", "postgis/postgis:17-3.5"]
+        image: ["postgres:15", "postgres:17"]
     services:
       db:
         image: ${{ matrix.image }}
@@ -20,7 +20,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 5s --health-retries 20
     steps:
       - uses: actions/checkout@v4
-      - run: psql -v ON_ERROR_STOP=0 -f scripts/postgis-move.sql
+      - run: psql -v ON_ERROR_STOP=0 -f scripts/role-lifecycle.sql
         env:
           PGHOST: localhost
           PGUSER: postgres
