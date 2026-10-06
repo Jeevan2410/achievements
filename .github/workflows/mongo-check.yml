@@ -5,7 +5,7 @@ on:
 permissions:
   contents: read
 jobs:
-  check:
+  libredb-1456:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -17,10 +17,17 @@ jobs:
         ports: ["27017:27017"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - run: npm install --no-save mongodb@7
-      - run: node scripts/mongo-check.mjs
-        env:
-          MONGO_URL: mongodb://localhost:27017
+          path: harness
+      - uses: actions/checkout@v4
+        with:
+          repository: Jeevan2410/libredb-studio
+          ref: fix/mongodb-nullable-inference
+          path: libredb
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+        working-directory: libredb
+      - run: cp ../harness/scripts/libredb-1456.ts ./check-1456.ts && bun run check-1456.ts
+        working-directory: libredb
