@@ -36,7 +36,7 @@ ALTER EXTENSION postgis SET SCHEMA extensions;
 BEGIN;
 UPDATE pg_extension SET extrelocatable = true WHERE extname = 'postgis';
 ALTER EXTENSION postgis SET SCHEMA extensions;
-ALTER EXTENSION postgis UPDATE TO "ANYNEXT";
+SELECT format('ALTER EXTENSION postgis UPDATE TO %I', extversion || 'next') FROM pg_extension WHERE extname = 'postgis' \gexec
 ALTER EXTENSION postgis UPDATE;
 UPDATE pg_extension SET extrelocatable = false WHERE extname = 'postgis';
 COMMIT;
