@@ -38,6 +38,8 @@ Flagship (Jeevan2410/achievement-tracker): PRs #4, #5, #6, #8, #10, #12 merged; 
 |---|---|
 | [lingui#2573](https://github.com/lingui/js-lingui/discussions/2573#discussioncomment-18756467) plain-Node Lingui with macros (tested demo) | posted 2026-10-05, awaiting asker |
 | [lingui#2496](https://github.com/lingui/js-lingui/discussions/2496#discussioncomment-18756694) per-page catalogs via experimental extractor (tested) | posted 2026-10-05, awaiting asker |
+| [supabase#51304](https://github.com/supabase/supabase/discussions/51304#discussioncomment-18770518) move PostGIS public -> extensions (tested on PostGIS 3.3/3.5) | posted 2026-10-06, awaiting asker |
+| [supabase#51303](https://github.com/supabase/supabase/discussions/51303) NOLOGIN owner role lifecycle (tested on PG15/17) | posted 2026-10-06, awaiting asker |
 
 | Item | Value |
 |---|---|
