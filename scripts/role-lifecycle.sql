@@ -7,7 +7,7 @@ SET ROLE proj_postgres;
 CREATE SCHEMA app;
 CREATE TABLE app.jobs (id int);
 CREATE ROLE sa_owner NOLOGIN;
-GRANT USAGE ON SCHEMA app TO sa_owner;
+GRANT USAGE, CREATE ON SCHEMA app TO sa_owner;
 GRANT SELECT ON app.jobs TO sa_owner;
 CREATE FUNCTION app.job_count() RETURNS bigint LANGUAGE sql SECURITY DEFINER SET search_path = '' AS $$ SELECT count(*) FROM app.jobs $$;
 \echo '== A. memberships after CREATE ROLE'
