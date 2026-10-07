@@ -1,14 +1,14 @@
 # Tracker
 
-Last updated: 2026-10-06 (counts from `achievement-tracker` and `gh api search/issues`)
+Last updated: 2026-10-07 (counts from `achievement-tracker` and `gh api search/issues`)
 
 ## Pull Shark
 | Item | Value |
 |---|---|
-| Merged PRs, authenticated (incl. private repos) | 55 |
-| Merged PRs, public only | 26 |
+| Merged PRs, authenticated (incl. private repos) | 78 |
+| Merged PRs, public only | 38 |
 | Next tier | 128 |
-| Remaining | 128 - 55 = **73** (or ~100 if only public PRs count) |
+| Remaining | 128 - 78 = **50** |
 
 Caveat: which count the badge uses is unconfirmed. Check the profile badge.
 
@@ -24,7 +24,7 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 | reticlehq/reticle#1402 | #1360 absent check on a hidden element names state: hidden | open; bot review addressed; audit CI failure is repo-wide |
 | libredb/libredb-studio#1556 | #1444 label Percona Server from @@version_comment | **MERGED 2026-10-06** |
 | corsairdev/corsair#1847 | #1838 Spotify search missing type | CI green; typing nit fixed; asked maintainer whether R4 demo video is needed |
-| libredb/libredb-studio#1561 | #1414 editor: selected statement keeps trailing ; on Elasticsearch | maintainer verified on ES 9.5.3; doc wording change requested and done 2026-10-07 |
+| libredb/libredb-studio#1561 | #1414 editor: selected statement keeps trailing ; on Elasticsearch | **MERGED 2026-10-07** after a doc wording change |
 | libredb/libredb-studio#1562 | #1450 LibreDB :memory: and missing-directory messages | **MERGED 2026-10-06** |
 | libredb/libredb-studio#1571 | #1431 name refusal/host/timeout instead of "fetch failed" (4 connectors) | open 2026-10-07 |
 | (proposal) | lingui #1704 compileNamespace vs "type": "module" | asked maintainers which fix they want, 2026-10-05; no code until they answer |
@@ -36,8 +36,7 @@ Flagship (Jeevan2410/achievement-tracker): PRs #4, #5, #6, #8, #10, #12 merged; 
 ## Pair Extraordinaire
 | Item | Value |
 |---|---|
-| Co-authored merged PRs | 0 |
-| Partner | none (parked) |
+| Status | **Unlocked** (shown on profile 2026-10-07) |
 
 ## Galaxy Brain
 | Answer | Status |
