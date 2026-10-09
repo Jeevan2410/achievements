@@ -5,29 +5,44 @@ on:
 permissions:
   contents: read
 jobs:
-  ps:
+  inline-edit:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        server: ["starrocks/allin1-ubuntu:latest", "starrocks/allin1-ubuntu:3.3.22", "mysql:latest"]
+        server: ["starrocks/allin1-ubuntu:latest", "starrocks/allin1-ubuntu:3.3.22", "mysql:latest", "apache/doris:all-in-one-4.1.3"]
+        studio:
+          - { name: before, repo: libredb/libredb-studio, ref: e58518a3290555d0a8aafa2dfc1b3000576d1d99 }
+          - { name: after, repo: Jeevan2410/libredb-studio, ref: fix/starrocks-inline-edit }
+    name: ${{ matrix.server }} / ${{ matrix.studio.name }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: 24
-      - run: npm init -y >/dev/null && npm install --no-audit --no-fund mysql2@3.24.4 >/dev/null
+          repository: ${{ matrix.studio.repo }}
+          ref: ${{ matrix.studio.ref }}
+          path: studio
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
       - name: Start
         run: |
-          if [ "${{ matrix.server }}" = "mysql:latest" ]; then
-            docker run -d --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:latest
-            echo "DB_PORT=3306" >> $GITHUB_ENV; echo "DB_USER=root" >> $GITHUB_ENV; echo "DB_PASSWORD=root" >> $GITHUB_ENV; echo "SEED=scripts/mysql-seed.sql" >> $GITHUB_ENV
-          else
-            docker run -d --name db -p 9030:9030 ${{ matrix.server }}
-            echo "DB_PORT=9030" >> $GITHUB_ENV; echo "DB_USER=root" >> $GITHUB_ENV; echo "SEED=scripts/starrocks-seed.sql" >> $GITHUB_ENV
-          fi
+          case "${{ matrix.server }}" in
+            mysql:*) docker run -d --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:latest
+              echo "DB_PORT=3306" >> $GITHUB_ENV; echo "DB_PASSWORD=root" >> $GITHUB_ENV; echo "SEED=scripts/mysql-seed.sql" >> $GITHUB_ENV ;;
+            apache/doris*) docker run -d --name db -p 9030:9030 ${{ matrix.server }}
+              echo "DB_PORT=9030" >> $GITHUB_ENV; echo "SEED=scripts/doris-seed.sql" >> $GITHUB_ENV ;;
+            *) docker run -d --name db -p 9030:9030 ${{ matrix.server }}
+              echo "DB_PORT=9030" >> $GITHUB_ENV; echo "SEED=scripts/starrocks-seed.sql" >> $GITHUB_ENV ;;
+          esac
+          echo "DB_USER=root" >> $GITHUB_ENV
+      - run: bun install --frozen-lockfile
+        working-directory: studio
       - name: Wait and seed
         run: |
-          for i in $(seq 1 120); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} -e 'SELECT 1' >/dev/null 2>&1 && break; sleep 3; done
-          for i in $(seq 1 40); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} < $SEED && break; sleep 5; done
-      - run: node scripts/ps-probe.mjs
+          for i in $(seq 1 150); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} -e 'SELECT 1' >/dev/null 2>&1 && break; sleep 3; done
+          for i in $(seq 1 60); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} < $SEED 2>/dev/null && break; sleep 5; done
+          mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} -e 'SELECT * FROM demo.pk'
+      - name: Inline edit through the provider
+        working-directory: studio
+        run: cp ../scripts/inline-edit-e2e.ts ./e2e.ts && bun run e2e.ts
