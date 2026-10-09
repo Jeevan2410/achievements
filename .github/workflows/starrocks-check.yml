@@ -29,5 +29,5 @@ jobs:
       - name: Wait and seed
         run: |
           for i in $(seq 1 120); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} -e 'SELECT 1' >/dev/null 2>&1 && break; sleep 3; done
-          for i in $(seq 1 20); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} < $SEED && break; sleep 5; done
+          for i in $(seq 1 40); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} < $SEED && break; sleep 5; done
       - run: node scripts/ps-probe.mjs

@@ -37,8 +37,10 @@ try {
 }
 show("after prepare only", await n());
 // The provider's stringLiteral(): a quote doubled, a backslash escaped.
-const literal = (v) => `'${v.replace(/\/g, "\\\\").replace(/'/g, "''")}'`;
-const value = "\0\b\t\n\r\x1a\"'\ probe it's a \"quote\" \path";
+const BS = String.fromCharCode(92);
+const literal = (v) => `'${v.split(BS).join(BS + BS).split("'").join("''")}'`;
+const value = ["\0\b\t\n\r\x1a\"'", BS, " probe it's a \"quote\" ", BS, "path"].join("");
+show("value length", value.length);
 await attempt("text SELECT literal", () => conn.query(`SELECT ${literal(value)} AS bound`));
 const [sel] = await conn.query(`SELECT ${literal(value)} AS bound`);
 show("SELECT literal round-trips", sel[0].bound === value);
