@@ -1,0 +1,33 @@
+name: starrocks-check
+on:
+  push:
+    branches: [starrocks-check]
+permissions:
+  contents: read
+jobs:
+  ps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        server: ["starrocks/allin1-ubuntu:latest", "starrocks/allin1-ubuntu:3.3.22", "mysql:latest"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm init -y >/dev/null && npm install --no-audit --no-fund mysql2@3.24.4 >/dev/null
+      - name: Start
+        run: |
+          if [ "${{ matrix.server }}" = "mysql:latest" ]; then
+            docker run -d --name db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:latest
+            echo "DB_PORT=3306" >> $GITHUB_ENV; echo "DB_USER=root" >> $GITHUB_ENV; echo "DB_PASSWORD=root" >> $GITHUB_ENV; echo "SEED=scripts/mysql-seed.sql" >> $GITHUB_ENV
+          else
+            docker run -d --name db -p 9030:9030 ${{ matrix.server }}
+            echo "DB_PORT=9030" >> $GITHUB_ENV; echo "DB_USER=root" >> $GITHUB_ENV; echo "SEED=scripts/starrocks-seed.sql" >> $GITHUB_ENV
+          fi
+      - name: Wait and seed
+        run: |
+          for i in $(seq 1 120); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} -e 'SELECT 1' >/dev/null 2>&1 && break; sleep 3; done
+          for i in $(seq 1 20); do mysql -h127.0.0.1 -P$DB_PORT -u$DB_USER ${DB_PASSWORD:+-p$DB_PASSWORD} < $SEED && break; sleep 5; done
+      - run: node scripts/ps-probe.mjs

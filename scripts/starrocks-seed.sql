@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS demo;
+USE demo;
+CREATE TABLE pk (id INT NOT NULL, name VARCHAR(200), n INT) PRIMARY KEY (id) DISTRIBUTED BY HASH(id) BUCKETS 1 PROPERTIES ('replication_num' = '1');
+INSERT INTO pk VALUES (1, 'one', 0), (2, 'two', 0);
