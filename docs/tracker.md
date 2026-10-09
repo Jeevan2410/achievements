@@ -29,6 +29,7 @@ Breakdown by repo: neelequip 25, Neel 9, Connect-4-game 5, projrc 4, BookNest 2 
 | libredb/libredb-studio#1571 | #1431 name refusal/host/timeout instead of "fetch failed" (4 connectors) | **MERGED 2026-10-08** after one round of review (TLS code only, timeout kind, doc line) |
 | libredb/libredb-studio#1595 | #1437 CockroachDB: no Edit on routines where the apply guard cannot run | **MERGED 2026-10-08**; maintainer merged main in and moved two line citations |
 | libredb/libredb-studio#1609 | #1393 Vitess 25: Explain probe asks a table when SELECT 1 is refused | **MERGED 2026-10-09**; maintainer pushed one Biome line-wrap fix in my test (lesson: never pipe a lint gate through tail) |
+| libredb/libredb-studio#1620 | #1403 StarRocks inline edit: retry a 1295-refused prepare as text | open 2026-10-09; verified live on StarRocks 4.1.6/3.3.22, MySQL, Doris |
 | (proposal) | lingui #1704 compileNamespace vs "type": "module" | asked maintainers which fix they want, 2026-10-05; no code until they answer |
 
 Lesson: search all-state PRs for the issue number before claiming.
